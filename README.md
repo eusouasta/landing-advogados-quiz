@@ -138,6 +138,44 @@ fetch('https://seu-crm.com/api/leads', {
 - Lazy loading de componentes
 - Animações com GPU acceleration
 
+## 🚀 Deploy
+
+### Opção 1: Vercel (Recomendado - Grátis)
+
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/eusouasta/landing-advogados-quiz)
+
+Ou via CLI:
+```bash
+# Instale a CLI (se não tiver)
+npm i -g vercel
+
+# Faça login
+vercel login
+
+# Deploy
+vercel
+
+# Deploy para produção
+vercel --prod
+```
+
+### Opção 2: GitHub Pages
+1. Vá em **Settings** > **Pages** no repositório
+2. Source: **Deploy from a branch**
+3. Branch: **main** / **root**
+4. Salve e aguarde o link
+
+### Opção 3: Netlify
+```bash
+# Instale a CLI
+npm i -g netlify-cli
+
+# Deploy
+netlify deploy --prod --dir .
+```
+
+---
+
 ## 📝 Licença
 
 Projeto desenvolvido para Martins & Associados Advocacia.
