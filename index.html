@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz Jurídico | Descubra Qual Área do Direito Você Precisa</title>
+    <meta name="description" content="Quiz gratuito para identificar a área do direito que você precisa. Responda algumas perguntas e receba uma avaliação personalizada.">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <nav class="navbar">
+                <a href="#" class="logo">
+                    <i class="fas fa-balance-scale"></i>
+                    <span>Martins & Associados</span>
+                </a>
+                <div class="nav-contact">
+                    <a href="tel:+5511999999999" class="nav-phone">
+                        <i class="fas fa-phone"></i>
+                        <span>(11) 99999-9999</span>
+                    </a>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Main Quiz Container -->
+    <main class="quiz-main">
+        <div class="container">
+            
+            <!-- Tela 1: Boas-vindas -->
+            <section id="welcome-screen" class="quiz-screen active">
+                <div class="quiz-card">
+                    <div class="quiz-header">
+                        <div class="quiz-icon">
+                            <i class="fas fa-gavel"></i>
+                        </div>
+                        <h1 class="quiz-title">Descubra Qual Área do Direito Você Precisa</h1>
+                        <p class="quiz-subtitle">
+                            Responda algumas perguntas rápidas sobre sua situação e receba uma 
+                            <strong>avaliação personalizada gratuita</strong> com a área de atuação ideal para seu caso.
+                        </p>
+                    </div>
+                    
+                    <div class="quiz-benefits">
+                        <div class="benefit-item">
+                            <i class="fas fa-check-circle"></i>
+                            <span>Respostas em menos de 2 minutos</span>
+                        </div>
+                        <div class="benefit-item">
+                            <i class="fas fa-check-circle"></i>
+                            <span>100% gratuito e confidencial</span>
+                        </div>
+                        <div class="benefit-item">
+                            <i class="fas fa-check-circle"></i>
+                            <span>Recomendação de especialista</span>
+                        </div>
+                    </div>
+
+                    <div class="quiz-cta">
+                        <button class="btn btn-primary btn-large" onclick="quizApp.startQuiz()">
+                            <span>Iniciar Avaliação</span>
+                            <i class="fas fa-arrow-right"></i>
+                        </button>
+                        <p class="quiz-note">
+                            <i class="fas fa-shield-alt"></i>
+                            Seus dados estão protegidos e não serão compartilhados
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Trust Indicators -->
+                <div class="trust-indicators">
+                    <div class="trust-item">
+                        <span class="trust-number">20+</span>
+                        <span class="trust-label">Anos de Experiência</span>
+                    </div>
+                    <div class="trust-item">
+                        <span class="trust-number">5.000+</span>
+                        <span class="trust-label">Casos Resolvidos</span>
+                    </div>
+                    <div class="trust-item">
+                        <span class="trust-number">98%</span>
+                        <span class="trust-label">Clientes Satisfeitos</span>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Tela 2: Captura de Lead (antes das perguntas) -->
+            <section id="lead-screen" class="quiz-screen">
+                <div class="quiz-card">
+                    <div class="progress-bar">
+                        <div class="progress-fill" style="width: 10%"></div>
+                    </div>
+                    
+                    <div class="quiz-step">
+                        <span class="step-number">Passo 1 de 8</span>
+                    </div>
+
+                    <h2 class="question-title">Antes de começar, precisamos conhecer você</h2>
+                    <p class="question-subtitle">Preencha seus dados para receber sua avaliação personalizada</p>
+
+                    <form id="lead-form" class="lead-form">
+                        <div class="form-group">
+                            <label for="lead-name">Nome completo *</label>
+                            <input type="text" id="lead-name" name="name" required placeholder="Digite seu nome">
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="lead-email">E-mail *</label>
+                                <input type="email" id="lead-email" name="email" required placeholder="seu@email.com">
+                            </div>
+                            <div class="form-group">
+                                <label for="lead-phone">WhatsApp *</label>
+                                <input type="tel" id="lead-phone" name="phone" required placeholder="(11) 99999-9999">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="lead-city">Cidade/Estado *</label>
+                            <input type="text" id="lead-city" name="city" required placeholder="Ex: São Paulo/SP">
+                        </div>
+
+                        <button type="submit" class="btn btn-primary btn-large">
+                            <span>Continuar para as Perguntas</span>
+                            <i class="fas fa-arrow-right"></i>
+                        </button>
+                    </form>
+                </div>
+            </section>
+
+            <!-- Tela 3-8: Perguntas do Quiz -->
+            <section id="question-screen" class="quiz-screen">
+                <div class="quiz-card">
+                    <div class="progress-bar">
+                        <div class="progress-fill" id="progress-fill"></div>
+                    </div>
+                    
+                    <div class="quiz-step">
+                        <span class="step-number" id="step-indicator">Passo 2 de 8</span>
+                    </div>
+
+                    <h2 class="question-title" id="question-text">Qual é a natureza da sua demanda jurídica?</h2>
+                    
+                    <div class="options-grid" id="options-container">
+                        <!-- Opções serão inseridas via JS -->
+                    </div>
+
+                    <button class="btn btn-outline btn-back" id="btn-back" onclick="quizApp.previousQuestion()">
+                        <i class="fas fa-arrow-left"></i>
+                        <span>Voltar</span>
+                    </button>
+                </div>
+            </section>
+
+            <!-- Tela 9: Processando Resultado -->
+            <section id="processing-screen" class="quiz-screen">
+                <div class="quiz-card processing-card">
+                    <div class="processing-animation">
+                        <div class="spinner"></div>
+                        <div class="processing-icons">
+                            <i class="fas fa-balance-scale"></i>
+                            <i class="fas fa-gavel"></i>
+                            <i class="fas fa-file-contract"></i>
+                            <i class="fas fa-user-tie"></i>
+                        </div>
+                    </div>
+                    <h2 class="processing-title">Analisando suas respostas...</h2>
+                    <p class="processing-text">Nossos especialistas estão identificando a melhor área do direito para seu caso</p>
+                    
+                    <div class="processing-steps">
+                        <div class="proc-step active" id="proc-step-1">
+                            <i class="fas fa-check"></i>
+                            <span>Analisando perfil</span>
+                        </div>
+                        <div class="proc-step" id="proc-step-2">
+                            <i class="fas fa-check"></i>
+                            <span>Identificando área</span>
+                        </div>
+                        <div class="proc-step" id="proc-step-3">
+                            <i class="fas fa-check"></i>
+                            <span>Preparando recomendação</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Tela 10: Resultado -->
+            <section id="result-screen" class="quiz-screen">
+                <div class="quiz-card result-card">
+                    <div class="result-badge">
+                        <i class="fas fa-award"></i>
+                        <span>Área Recomendada</span>
+                    </div>
+
+                    <h2 class="result-title" id="result-area">Direito do Trabalho</h2>
+                    
+                    <div class="result-match">
+                        <span class="match-percentage" id="match-percentage">95%</span>
+                        <span class="match-label">de compatibilidade com seu perfil</span>
+                    </div>
+
+                    <div class="result-description" id="result-description">
+                        <p>Com base nas suas respostas, identificamos que você precisa de um advogado especialista em <strong>Direito do Trabalho</strong>.</p>
+                    </div>
+
+                    <div class="result-reasons">
+                        <h3><i class="fas fa-lightbulb"></i> Por que esta área é ideal para você:</h3>
+                        <ul id="result-reasons-list">
+                            <!-- Razões inseridas via JS -->
+                        </ul>
+                    </div>
+
+                    <div class="result-next-steps">
+                        <h3><i class="fas fa-arrow-circle-right"></i> Próximos passos recomendados:</h3>
+                        <div class="steps-list" id="next-steps-list">
+                            <!-- Passos inseridos via JS -->
+                        </div>
+                    </div>
+
+                    <div class="result-cta">
+                        <p class="cta-text">Agende uma <strong>consulta gratuita</strong> com um de nossos especialistas</p>
+                        <div class="cta-buttons">
+                            <a href="https://wa.me/5511999999999?text=Olá!%20Fiz%20o%20quiz%20e%20preciso%20de%20ajuda%20com%20meu%20caso" 
+                               class="btn btn-whatsapp btn-large" target="_blank">
+                                <i class="fab fa-whatsapp"></i>
+                                <span>Falar no WhatsApp</span>
+                            </a>
+                            <button class="btn btn-primary btn-large" onclick="quizApp.showContactForm()">
+                                <i class="fas fa-calendar-alt"></i>
+                                <span>Agendar Consulta</span>
+                            </button>
+                        </div>
+                        <p class="cta-note">Resposta em até 2 horas em horário comercial</p>
+                    </div>
+
+                    <button class="btn btn-outline btn-restart" onclick="quizApp.restartQuiz()">
+                        <i class="fas fa-redo"></i>
+                        <span>Refazer Quiz</span>
+                    </button>
+                </div>
+            </section>
+
+            <!-- Tela 11: Formulário de Contato Final -->
+            <section id="contact-screen" class="quiz-screen">
+                <div class="quiz-card">
+                    <div class="quiz-header">
+                        <h2 class="quiz-title">Agende sua Consulta</h2>
+                        <p class="quiz-subtitle">Preencha os detalhes abaixo e entraremos em contato em breve</p>
+                    </div>
+
+                    <form id="contact-form" class="contact-form">
+                        <div class="form-group">
+                            <label>Área de Interesse</label>
+                            <input type="text" id="contact-area" readonly class="readonly-field">
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="contact-name">Nome *</label>
+                                <input type="text" id="contact-name" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="contact-phone">Telefone *</label>
+                                <input type="tel" id="contact-phone" required>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="contact-email">E-mail *</label>
+                            <input type="email" id="contact-email" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="contact-priority">Urgência do caso</label>
+                            <select id="contact-priority" class="form-select">
+                                <option value="normal">Normal - Posso aguardar alguns dias</option>
+                                <option value="urgente">Urgente - Preciso de atendimento rápido</option>
+                                <option value="emergencia">Emergência - Situação crítica</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="contact-message">Descreva brevemente seu caso *</label>
+                            <textarea id="contact-message" rows="4" required 
+                                placeholder="Conte-nos os detalhes principais do seu caso..."></textarea>
+                        </div>
+
+                        <div class="form-group checkbox-group">
+                            <label class="checkbox-label">
+                                <input type="checkbox" id="contact-whatsapp" checked>
+                                <span class="checkmark"></span>
+                                Prefiro contato via WhatsApp
+                            </label>
+                        </div>
+
+                        <button type="submit" class="btn btn-primary btn-large">
+                            <span>Solicitar Consulta Gratuita</span>
+                            <i class="fas fa-paper-plane"></i>
+                        </button>
+                    </form>
+                </div>
+            </section>
+
+            <!-- Tela 12: Confirmação -->
+            <section id="confirmation-screen" class="quiz-screen">
+                <div class="quiz-card confirmation-card">
+                    <div class="confirmation-icon">
+                        <i class="fas fa-check-circle"></i>
+                    </div>
+                    <h2 class="confirmation-title">Solicitação Enviada!</h2>
+                    <p class="confirmation-text">
+                        Recebemos sua solicitação de consulta. Nossa equipe analisará seu caso e entrará em contato em até <strong>2 horas</strong>.
+                    </p>
+                    
+                    <div class="confirmation-details">
+                        <div class="detail-item">
+                            <i class="fas fa-envelope"></i>
+                            <span>Confira seu e-mail para mais informações</span>
+                        </div>
+                        <div class="detail-item">
+                            <i class="fab fa-whatsapp"></i>
+                            <span>Também enviamos confirmação no WhatsApp</span>
+                        </div>
+                    </div>
+
+                    <div class="confirmation-cta">
+                        <p>Enquanto isso, que tal nos seguir nas redes sociais?</p>
+                        <div class="social-links">
+                            <a href="#" class="social-link"><i class="fab fa-linkedin-in"></i></a>
+                            <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+                            <a href="#" class="social-link"><i class="fab fa-facebook-f"></i></a>
+                        </div>
+                    </div>
+
+                    <button class="btn btn-outline" onclick="quizApp.restartQuiz()">
+                        <i class="fas fa-redo"></i>
+                        <span>Voltar ao Início</span>
+                    </button>
+                </div>
+            </section>
+
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <a href="#" class="logo">
+                        <i class="fas fa-balance-scale"></i>
+                        <span>Martins & Associados</span>
+                    </a>
+                    <p>Excelência jurídica há mais de 20 anos</p>
+                </div>
+                <div class="footer-contact">
+                    <p><i class="fas fa-map-marker-alt"></i> Av. Paulista, 1000 - São Paulo/SP</p>
+                    <p><i class="fas fa-phone"></i> (11) 99999-9999</p>
+                    <p><i class="fas fa-envelope"></i> contato@martinsadvogados.com.br</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Martins & Associados Advocacia. Todos os direitos reservados.</p>
+                <p class="footer-note">OAB/SP 123.456 | Este quiz não constitui assessoria jurídica</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- WhatsApp Float -->
+    <a href="https://wa.me/5511999999999" class="whatsapp-float" target="_blank">
+        <i class="fab fa-whatsapp"></i>
+        <span class="whatsapp-tooltip">Fale conosco</span>
+    </a>
+
+    <!-- Toast Notification -->
+    <div id="toast" class="toast">
+        <i class="fas fa-info-circle"></i>
+        <span id="toast-message">Mensagem</span>
+    </div>
+
+    <!-- JavaScript -->
+    <script src="assets/js/main.js"></script>
+</body>
+</html>
